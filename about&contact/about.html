@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLine24X7</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background: url('background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: #333;
+    }
+    nav.navbar {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .container1 {
+        padding: 50px;
+        text-align: center;
+        align-content: center;
+        background: url(ambulance.png);
+        background-size: 100% 100%;
+        background-attachment: fixed;
+        filter: blur(40%);
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+    .container1 p{
+      background-color: transparent;     
+      backdrop-filter: blur(3px);
+    }
+   
+    .center {
+        width: 70%;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+    .container2{
+      background: url(https://medulance.com/grow-your-business.934078563e9219f7.png);
+      padding: 40px 20px;
+      background-size: 100% 100%;
+      background-attachment: fixed;
+    }
+    .container2 p,h1{
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+      background-color: transparent;
+      backdrop-filter: blur(20px);
+    }
+    .container2 p{
+      font-size: 20px;
+    }
+  .serv{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+  }
+  .blocks {
+  display: flex;
+  flex-direction:row;
+  width: 590px;
+  align-items: center;
+  margin: 20px;
+}
+.blocks p{
+  margin-left:20px;
+  /* font-size: 20px; */
+}
+    .container3, .container4, .container5 {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 40px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .container3 h1, .container4 h1, .container5 h1 {
+        font-size: 48px;
+        text-align: center;
+        color: #D02B2C;
+        margin-bottom: 20px;
+    }
+    #team-members img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+    #team-members .team-card {
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+    #team-members .team-card:hover {
+        transform: scale(1.05);
+    }
+    .container5 h5, .container5 ul {
+        margin: 20px 0;
+    }
+    .container5 ul {
+        list-style: none;
+    }
+    .container5 ul li {
+        font-size: 18px;
+        margin: 10px 0;
+        padding-left: 20px;
+        position: relative;
+    }
+    .container5 ul li::before {
+        content: '✅ ';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: green;
+        font-size: 18px;
+    }
+    
+    @media (max-width: 768px) {
+      .container3 h1, .container4 h1, .container5 h1 {
+          font-size: 36px;
+      }
+      #team-members .team-card {
+          margin-bottom: 20px;
+      }
+      #team-members img {
+          width: 100px;
+          height: 100px;
+      }
+    }
+    .footer {
+    background-color:  #f7f7f7; 
+    color:black;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.footer-container div {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+}
+
+.footer h4 {
+    margin-bottom: 10px;
+}
+
+.footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin: 5px 0;
+}
+
+.footer a {
+    color:black;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 10px;
+}
+
+.footer img {
+    width: 24px;
+    height: 24px;
+    margin: 0 10px;
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="logo-color.png" alt="logo" width="200px" height="50px">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/lifeline/mainpage/index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/lifeline/about&contact/about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/lifeline/blood/blood.html">Donate</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/lifeline/about&contact/cond.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+  <div class="container1">
+    <p>
+      LifeLine24X7 steps in,<br>
+      With blood and care, swift as light,<br>
+      We bring you help in darkest night.<br><br>
+      Lives to save, time we race,<br>
+      Ambulance aid, in every place,<br>
+      With every beat, with every breath,<br>
+      We fight to shield from harm and death.
+    </p>
+ 
+  </div>
+
+<div class="center">
+    <div class="container3">
+      <h1>Our Mission</h1>
+      <p>We, the students of Chitkara University, created Lifeline 24*7 to provide 24/7 ambulance services to blood donors, ensuring they reach nearby hospitals safely and on time. Our mission is to make blood donation a seamless and hassle-free experience, promoting a culture of generosity and social responsibility.</p>
+      <p>With Lifeline 24*7, you can rest assured that you'll receive prompt and reliable transportation to the nearest hospital, allowing you to focus on the selfless act of blood donation.</p>
+    </div>
+
+    <div class="container4">
+      <h1>Meet Our Team</h1>
+      <div id="team-members" class="row">
+        <div class="col-md-3 team-card">
+          <img src="harman.jpg" alt="Team Member 1">
+          <h3>Harman Singla</h3>
+          <p>Student, Chitkara University | Blood Donation Enthusiast</p>
+          <p>Quote: "Every drop counts, and we're committed to making every donation count."</p>
+        </div>
+        <div class="col-md-3 team-card">
+          <img src="Harry.jpg" alt="Team Member 2">
+          <h3>Harry Jindal</h3>
+          <p>Student, Chitkara University | Tech Whiz</p>
+          <p>Quote: "Technology can be a powerful tool for social good, and we're proud to be using it to make a difference."</p>
+        </div>
+        <div class="col-md-3 team-card">
+          <img src="keshav.jpg" alt="Team Member 3">
+          <h3>Keshav</h3>
+          <p>Student, Chitkara University | Marketing Guru</p>
+          <p>Quote: "Spreading awareness about blood donation is crucial, and we're dedicated to getting the word out."</p>
+        </div>
+        <div class="col-md-3 team-card">
+          <img src="mani.jpg" alt="Team Member 4">
+          <h3>Mahesh Dadwak</h3>
+          <p>Student, Chitkara University | Fitness Freak</p>
+          <p>Quote: "Logistics can be complex, but we've got it covered, ensuring a smooth experience for our donors."</p>
+        </div>
+      </div>
+    </div>
+</div>
+    <div class="container2">
+      <h1>Why choose Us?</h1>
+      <p>At Lifeline, patient care and convenience go hand-in-hand.Our integrated ambulance transport services were created to assist in saving human lives by providing an ultimate network of equipped Ambulances.By simple location-based mapping, we built a 24/7 emergency and technology platform that connects the customers and the ambulance drivers directly with each other.</p>
+      <div class="serv">
+        <div class="blocks">
+          <img src="https://medulance.com/assets/images/f-policy.svg"> 
+          <p>Patient First service</p>
+        </div>
+      <div class="blocks">
+        <img src="https://medulance.com/assets/images/15mins.svg">
+        <p>Emergency assisstance within 15 minutes or less</p>
+      </div> <br>
+      <div class="blocks">
+        <img src="https://medulance.com/assets/images/24hrs.svg">
+        <p>24/7 Support</p>
+      </div>
+      <div class="blocks">
+        <img src="https://medulance.com/assets/images/ambulance.svg">
+        <p>Biggest fleet of 7500 ambulances accross India</p>
+      </div>
+      </div>
+    </div>
+<div class="center">
+
+    <div class="container5">
+      <h1>Our Activities</h1>
+      <h5>Since its inception, BloodConnect has developed a 360-degree solution to cater to the problem of blood shortage in the country. Our model revolves around these focal points:</h5>
+      <ul id="activities">
+        <li> Ensuring continuous, sufficient blood supply to blood banks through blood donation camps and weekly donations</li>
+        <li> Providing 24x7 emergency ambulance services to save lives and ensure quick hospital access for patients in need</li>
+        <li> Operating a 24x7 emergency helpline for those in critical need of blood and medical services</li>
+        <li> Increasing awareness through Street Plays, Info-Talks, Competitions, and Social Media Campaigns</li>
+        <li> Establishing a network of youth across the country to lead the blood donation movement</li>
+        <li> Collaborating with hospitals and blood banks to streamline the blood donation process and transportation</li>
+        <li> Organizing free health check-ups and wellness camps to educate people about the importance of blood donation</li>
+        <li> Offering donor benefits like post-donation health care services and informative sessions on safe blood donation</li>
+      </ul>
+    </div>
+  </div>
+  <section id="four" class="four">
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="quick-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/mainpage/index.html">Home</a></li>
+                    <li><a href="abouh.html">About Us</a></li>
+                    <li><a href="#two">Services</a>
+                        <ul>
+                            <li><a href="#">Blood Donation</a></li>
+                            <li><a href="/ambulance/page.html">Ambulance Support</a></li>
+                            <li><a href="/quicktips/quicktip.html">Quick Tips</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="cond.html">Contact Us</a></li>
+                </ul>
+            </div>
+    
+            <div class="contact-us">
+                <div class="contact-us">
+                    <h4>Contact Us</h4>
+                    <p>Email: <a href="mailto:mahesh0562.be23@chitkara.edu.in">Lifeline24X7.com</a></p>
+                    <p>Phone: (123) 456-7890</p>
+                    <p>Address: Chitkara University, Rajpura</p>
+                </div>
+                
+            </div>
+    
+            <div class="follow-us">
+                <h4>Follow Us</h4>
+                <a href="https://www.instagram.com/maheshdadwal07?igsh=cml1ODh5MnRpczNx"><img src="insta.png" alt="Instagram Logo"></a>
+                <a href="https://www.linkedin.com/in/mahesh-dadwal-972b642a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="linkedin.png" alt="LinkedIn Logo"></a>
+                <a href="#"><img src="fb.png" alt="Facebook Logo"></a>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-bottom">
+            <p>© 2024 Lifeline24X7. All Rights Reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+    
+
+</section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA6zw6r8qX9oQUeEuR4MOA7Hk7f3JTm" crossorigin="anonymous"></script>
+</body>
+</html>
