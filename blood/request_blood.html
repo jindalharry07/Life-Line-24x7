@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Blood - Blood Bank</title>
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- AOS for animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 70px;
+            margin: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+            scroll-behavior: smooth;
+            padding-top: 90px; 
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #e63946;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .navbar {
+            /* background-color: #ffffff; */
+            border-radius: 0 0 20px 20px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1030;
+            position: fixed; 
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar .logo {
+            height: 50px;
+        }
+
+        .navbar-collapse {
+            flex-grow: 0;
+        }
+
+        .navbar-nav {
+            flex-direction: row;
+            flex-wrap: nowrap; 
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #e63946;
+        }
+
+        .navbar .btn {
+            border-radius: 20px;
+        }
+
+        .navbar .btn-outline-danger {
+            border-color: #e63946;
+            color: #e63946;
+        }
+
+        .navbar .btn-outline-danger:hover {
+            background-color: #e63946;
+            color: white;
+        }
+
+        .navbar .btn-danger {
+            background-color: #e63946;
+            border: none;
+        }
+
+        .navbar .btn-danger:hover {
+            background-color: #d62839;
+        }
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: none;
+            background-color: #e63946; 
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e63946, #ff6f61);
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem; /* Adjusted for better sizing */
+        }
+
+        .need-form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 40px auto;
+            transition: transform 0.5s ease;
+        }
+
+        .need-form input, .need-form select, .need-form textarea {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e63946;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        .need-form input:focus, .need-form select:focus, .need-form textarea:focus {
+            border-color: #ff6f61;
+            outline: none;
+        }
+
+        .need-form button {
+            background-color: #e63946;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .need-form button:hover {
+            background-color: #ff6f61;
+        }
+
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #e63946;
+            font-weight: bold;
+        }
+
+        /* 3D Y-Axis Rotation Effect */
+        .rotating-form {
+            animation: rotateFormY 1.5s ease-in-out forwards;
+        }
+
+        @keyframes rotateFormY {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(360deg); /* Changed to a full rotation */
+            }
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+
+        .alert {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1rem;
+            padding: 10px;
+        }
+
+        /* AOS Animations */
+        [data-aos] {
+            opacity: 0;
+            transition-property: transform, opacity;
+        }
+
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: none;
+        }
+
+        [data-aos="fade-up"] {
+            transform: translate3d(0, 50px, 0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .header h1 {
+                font-size: 2rem; /* Adjusted for smaller screens */
+            }
+
+            .need-form {
+                padding: 20px; /* Reduced padding on smaller screens */
+            }
+
+            .need-form button {
+                font-size: 1rem; /* Smaller button text */
+            }
+
+            .thank-you-message {
+                font-size: 1.2rem; /* Adjusted thank you message */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="logo-color.png" alt="Blood Bank Logo" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i> 
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="blood.html"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services"><i class="fas fa-cogs"></i> Our Services</a>
+                    </li>
+                    
+                   
+                    <li class="nav-item">
+                        <a class="btn btn-danger ms-2" href="#donate"><i class="fas fa-hand-holding-heart"></i> Donate Blood</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="header" data-aos="fade-up">
+        <h1>Request Blood</h1>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="need-form" data-aos="fade-up" id="needFormContainer">
+            <form id="needForm">
+                <input type="text" id="requesterName" placeholder="Your Name" required>
+                <input type="email" id="requesterEmail" placeholder="Email Address" required>
+                <input type="tel" id="requesterContact" placeholder="Contact Number" required>
+                <input type="date" id="requestDate" required>
+                <select id="neededBloodGroup" required>
+                    <option value="" disabled selected>Required Blood Group</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+                <textarea id="needMessage" placeholder="Additional Information" rows="5"></textarea>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Submit Request</button>
+            </form>
+            <div class="alert alert-success" id="successAlert">Your blood request has been submitted!</div>
+            <div class="thank-you-message" id="thankYouMessage">Thank You for Submitting!</div>
+        </div>
+    </div>
+    <!-- AOS Script for Animations -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        document.getElementById('needForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Simple form validation
+            const name = document.getElementById('requesterName').value;
+            const email = document.getElementById('requesterEmail').value;
+            const contact = document.getElementById('requesterContact').value;
+            const bloodGroup = document.getElementById('neededBloodGroup').value;
+            if (name === '' || email === '' || contact === '' || bloodGroup === '') {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            const bloodRequest = {
+                name: name,
+                email: email,
+                contact: contact,
+                date: document.getElementById('requestDate').value,
+                bloodGroup: bloodGroup,
+                message: document.getElementById('needMessage').value,
+            };
+
+            // Save to local storage
+            let bloodRequests = JSON.parse(localStorage.getItem('bloodRequests')) || [];
+            bloodRequests.push(bloodRequest);
+            localStorage.setItem('bloodRequests', JSON.stringify(bloodRequests));
+            const formContainer = document.getElementById('needFormContainer');
+            formContainer.classList.add('rotating-form');
+            setTimeout(() => {
+                formContainer.classList.remove('rotating-form');
+                document.getElementById('needForm').style.display = 'none';
+                document.getElementById('thankYouMessage').style.display = 'block';
+            }, 1500); // 1.5 seconds to complete the rotation
+        });
+    </script>
+</body>
+</html>
