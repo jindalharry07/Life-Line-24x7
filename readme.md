@@ -2,6 +2,7 @@
 
 LifeLine24X7 is a web-based platform designed to save lives by offering quick access to blood donation and ambulance services. It connects patients in need with nearby blood donors and emergency ambulance support through a responsive, user-friendly interface.
 
+```
 🌟 Key Features
 🩸 Find Blood Donors nearby or register as one.
 🚑 Book Ambulances for emergency situations.
@@ -29,5 +30,6 @@ Open mainpage/index.html in your browser to explore the app.
 📊 Admin dashboard to manage requests and users
 
 🤝 Contributions Feel free to fork the repo and create pull requests. For major feature changes, kindly open an issue first for discussion.
+```
 
 📬 Contact 📧 jindalharry07@gmail.com
