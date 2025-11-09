@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+    body {
+        font-family: "Lato", sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .kk {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+    }
+    .blood, .blood-btn {
+        background-color: #a90300;
+        color: white;
+        z-index: 1;
+    }
+    .plasma, .plasma-btn {
+        background-color: #e9cc06;
+        color: white;
+        z-index: 1;
+    }
+    .plates, .plates-btn {
+        background-color: #9700a9;
+        color: white;
+        z-index: 1;
+    }
+    .covid, .covid-btn {
+        background-color: #2c2c2c;
+        color: white;
+        z-index: 1;
+    }
+    .blood, .plasma, .covid, .plates {
+        width: 100%;
+        border-radius: 0 20px 20px 20px;
+        position: relative;
+        padding: 10px;
+        z-index: 10;
+        display: none;
+        height: 270px;
+    }
+    .container {
+        width: 80%;
+        padding: 20px;
+        
+    }
+    .cc {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .blood {
+        background-image: linear-gradient(to right, #a90300, #6f0000);
+    }
+    .plates {
+        background-image: linear-gradient(to right, #9700a9, #5e006f);
+    }
+    .plasma {
+        background-image: linear-gradient(to right, #e9cc06, #c7ad00);
+    }
+    .covid {
+        background-image: linear-gradient(to right, #444444, #2c2c2c);
+    }
+    .bb {
+        display: flex;
+        gap: 20px;
+        line-height: 1.7;
+    }
+    
+    img {
+        display: block;
+        width: 104px;
+        margin-top:-120px;
+        margin-left: 150px;
+        margin-right: 100px;
+        
+    }
+    p {
+        font-size: 16px;
+        font-weight: 400;
+        margin: 0;
+        margin-top: -40px;
+        margin-left: 50px;
+    }
+    h3 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-left: 50px;
+    }
+    #btn {
+        padding: 15px 40px;
+        width: 20%;
+        font-size: 17px;
+        font-weight: 800;
+        border: none;
+        margin-right: 5px;
+        cursor: pointer;
+        border-radius: 0 20px 0 0;
+    }
+    @media (max-width: 1030px) {
+        #btn {
+            padding: 17px 0px;
+           
+            font-size: 15px;
+            width: 84px;
+            font-weight: 700;
+        }
+    }
+    @media (max-width: 768px) {
+        #btn {
+            padding: 10px 0px;
+            font-size: 13px;
+            width: 84px;
+            font-weight: 600;
+        }
+        
+        
+    }
+    @media (max-width: 630px) {
+        #btn {
+            font-size: 15px;
+            border-radius: 0 12px 0 0;
+            font-weight: 700;
+        }
+    }
+    
+    @media(max-width:965px){
+         p{
+            font-size: 12px;
+            font-weight: 350;
+            
+        }
+        
+    }
+</style>
+<body>
+    <div class="cc">
+        <div class="container">
+            <div class="kk">
+                <button class="blood-btn" id="btn" onclick="chnbb()">Blood</button>
+                <button class="plates-btn" id="btn" onclick="chnppl()">Platelets</button>
+                <button class="plasma-btn" id="btn" onclick="chnpl()">Plasma</button>
+                <button class="covid-btn" id="btn" onclick="chncv()">Covid</button>
+            </div>
+
+            <div class="blood" style="display: block;">
+                <h3>Blood</h3>
+                
+                <div class="bb">
+                    <p>Blood is a constantly circulating fluid providing the body with nutrition, oxygen, and waste removal. Blood is mostly liquid, with numerous cells and proteins suspended in it, making blood "thicker" than pure water. The average person has about 5 liters (more than a gallon) of blood.</p>
+                    <div class="imgg">
+                        <img src="icon-donation.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="plates">
+                <h3>Platelets</h3>
+                <div class="bb">
+                    <p>Platelets, or thrombocytes, are small, colorless cell fragments in our blood that form clots and stop or prevent bleeding. Platelets are made in our bone marrow, the sponge-like tissue inside our bones. Bone marrow contains stem cells that develop into red blood cells, white blood cells, and platelets.</p>
+                    <div class="imgg">
+                        <img src="plate@600x.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="plasma">
+                <h3>Plasma</h3>
+                <div class="bb">
+                    <p>Plasma is the liquid portion of blood. About 55% of our blood is plasma, and the remaining 45% are red blood cells, white blood cells, and platelets that are suspended in the plasma. Plasma is about 92% water.</p>
+                    <div class="imgg">
+                        <img src="Plasma@600x.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="covid">
+                <h3>COVID</h3>
+                <div class="bb">
+                    <p>Blood donated by people who've recovered from COVID-19 has antibodies to the virus that causes it. The donated blood is processed to remove blood cells, leaving behind liquid (plasma) and antibodies. These can be given to people with COVID-19 to boost their ability to fight the virus.</p>
+                    <div class="imgg">
+                        <img src="Covid@600x.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function hideAll() {
+            document.querySelector(".blood").style.display = "none";
+            document.querySelector(".plates").style.display = "none";
+            document.querySelector(".plasma").style.display = "none";
+            document.querySelector(".covid").style.display = "none";
+        }
+        function chnbb() {
+            hideAll();
+            document.querySelector(".blood").style.display = "block";
+        }
+        function chnppl() {
+            hideAll();
+            document.querySelector(".plates").style.display = "block";
+        }
+        function chnpl() {
+            hideAll();
+            document.querySelector(".plasma").style.display = "block";
+        }
+        function chncv() {
+            hideAll();
+            document.querySelector(".covid").style.display = "block";
+        }
+    </script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .cc {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+        .kk {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        .blood-btn, .plates-btn, .plasma-btn, .covid-btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 800;
+            color: white;
+            border: none;
+            border-radius: 0 15px 0 0;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+            min-width: 80px;
+        }
+        .blood-btn { background-color: #a90300; }
+        .plasma-btn { background-color: #e9cc06; }
+        .plates-btn { background-color: #9700a9; }
+        .covid-btn { background-color: #2c2c2c; }
+
+        .blood, .plasma, .covid, .plates {
+            width: 100%;
+            border-radius: 0 20px 20px 20px;
+            padding: 20px;
+            display: none;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+        .blood { background-image: linear-gradient(to right, #a90300, #6f0000); }
+        .plasma { background-image: linear-gradient(to right, #e9cc06, #c7ad00); }
+        .plates { background-image: linear-gradient(to right, #9700a9, #5e006f); }
+        .covid { background-image: linear-gradient(to right, #444444, #2c2c2c); }
+        
+        h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+        }
+        .bb {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            line-height: 1.7;
+            gap: 15px;
+        }
+        p {
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0;
+            width: 100%;
+        }
+        img {
+            width: 80px;
+            height: auto;
+        }
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            .bb {
+                flex-direction: row;
+                text-align: left;
+            }
+            img {
+                width: 104px;
+                margin-left: 30px;
+            }
+            p {
+                width: 65%;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cc">
+        <div class="container">
+            <div class="kk">
+                <button class="blood-btn" onclick="chnbb()">Blood</button>
+                <button class="plates-btn" onclick="chnppl()">Platelets</button>
+                <button class="plasma-btn" onclick="chnpl()">Plasma</button>
+                <button class="covid-btn" onclick="chncv()">Covid</button>
+            </div>
+
+            <div class="blood" style="display: block;">
+                <h3>Blood</h3>
+                <div class="bb">
+                    <p>Blood is a constantly circulating fluid providing the body with nutrition, oxygen, and waste removal...</p>
+                    <img src="https://www.ambipalm.com/images/aboutus/Blood@600.png" alt="Blood image">
+                </div>
+            </div>
+
+            <div class="plates">
+                <h3>Platelets</h3>
+                <div class="bb">
+                    <p>Platelets, or thrombocytes, are small, colorless cell fragments in our blood that form clots...</p>
+                    <img src="https://www.ambipalm.com/images/aboutus/Platelets@600x.png" alt="Platelets image">
+                </div>
+            </div>
+
+            <div class="plasma">
+                <h3>Plasma</h3>
+                <div class="bb">
+                    <p>Plasma is the liquid portion of blood. About 55% of our blood is plasma...</p>
+                    <img src="https://www.ambipalm.com/images/aboutus/Plasma@600x.png" alt="Plasma image">
+                </div>
+            </div>
+
+            <div class="covid">
+                <h3>COVID</h3>
+                <div class="bb">
+                    <p>Blood donated by people who've recovered from COVID-19 has antibodies to the virus that causes it...</p>
+                    <img src="https://www.ambipalm.com/images/aboutus/Covid@600x.png" alt="COVID image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function hideAll() {
+            document.querySelector(".blood").style.display = "none";
+            document.querySelector(".plates").style.display = "none";
+            document.querySelector(".plasma").style.display = "none";
+            document.querySelector(".covid").style.display = "none";
+        }
+        function chnbb() {
+            hideAll();
+            document.querySelector(".blood").style.display = "block";
+        }
+        function chnppl() {
+            hideAll();
+            document.querySelector(".plates").style.display = "block";
+        }
+        function chnpl() {
+            hideAll();
+            document.querySelector(".plasma").style.display = "block";
+        }
+        function chncv() {
+            hideAll();
+            document.querySelector(".covid").style.display = "block";
+        }
+    </script>
+</body>
+</html>--> 

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Services</title>
+   <link rel="stylesheet" href="amb.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo-color.png" alt="Lifeline 24*7" />
+        </div>
+        <div class="nav-buttons">
+            <a href="/mainpage/index.html" class="home-button">Home</a>
+            <a href="bookings.html" class="home-button">Admin</a>
+            <a href="#" class="book-now-btn" onclick="emergencyBooking()">🚨 Emergency Booking</a>
+        </div>
+    </nav>
+
+
+    <div class="service-container">
+        <div class="service-box">
+            <div class="service-content">
+                <h2>Normal Ambulance Services</h2>
+                <p>In India, Lifeline 24*7’s Normal Ambulance Service ensures swift and reliable transportation during medical emergencies. Our fleets are equipped with trained personnel and essential medical equipment. We are guaranteeing the safe and timely transit to healthcare facilities in India. Your well-being is our prima-priority. With Lifeline 24*7’s Normal Ambulance services, you can trust us to provide efficient and compassionate emergency medical services when you need them the most.</p>
+                <button class="book-now" onclick="openForm()">🚑 Book Now</button>
+            </div>
+            <div class="service-image">
+                <img src="normal.jpg" alt="Normal Ambulance Service">
+            </div>
+        </div>
+        
+        <div class="service-box">
+            <div class="service-image">
+                <img src="oxygen.jpg" alt="Oxygen Ambulance Service">
+            </div>
+            <div class="service-content">
+                <h2>Oxygen Ambulance Services</h2>
+                <p>Lifeline 24*7’s Oxygen Ambulance Service is serving in major cities of India . Tailored for critical situations, our fleet is equipped with advanced life-saving technology, offering a vital supply of oxygen during transit to all Indians. Meticulously trained professionals ensure a seamless experience, prioritizing patient well-being. Whether it’s a short distance or an inter-state transfer, Lifeline 24*7 stands as your dependable partner for critical care transportation.</p>
+                <button class="book-now" onclick="openForm()">🚑 Book Now</button>
+            </div>
+        </div>
+        
+        <div class="service-box">
+            <div class="service-content">
+                <h2>ICU Ambulance Services</h2>
+                <p>ICU Ambulance Services redefine emergency medical care with state-of-the-art Intensive Care Units on wheels. Our specialized fleet is staffed with highly trained medical professionals, ensuring advanced critical care during transit. Equipped with ventilators, monitors, and life-saving equipment, Lifeline 24*7’s ICU Ambulance guarantees the highest level of care for patients in critical conditions. Whether it’s inter-city or inter-state in India, trust Lifeline 24*7 to provide a mobile ICU Ambulance that brings the hospital to you.</p>
+                <button class="book-now" onclick="openForm()">🚑 Book Now</button>
+            </div>
+            <div class="service-image">
+                <img src="icu.jpg" alt="ICU Ambulance Service">
+            </div>
+        </div>
+    </div>
+<div class="cost-section">
+    <h2>Cost of Ambulance Services, For All Services</h2>
+    <p>Lifeline 24*7 is offering Affordable Excellence in Every Emergency. We believe quality healthcare should be accessible to all. Our transparent and reasonable pricing ensures that critical ambulance services, including a range of specialized offerings, remain affordable.</p>
+    
+    <table class="cost-table">
+        <thead>
+            <tr>
+                <th>Ambulance Services</th>
+                <th>Kilometer Charges</th>
+                <th>Normal Approx. Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Normal Ambulance Services</td>
+                <td>10km</td>
+                <td>Rs. 499 to 999</td>
+            </tr>
+            <tr>
+                <td>Oxygen Ambulance Services</td>
+                <td>11km</td>
+                <td>Rs. 599 to 1999</td>
+            </tr>
+            <tr>
+                <td>ICU Ambulance Services</td>
+                <td>30km</td>
+                <td>Rs. 1999 to 3999</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h2>Book Your Ambulance</h2>
+        <form id="bookingForm">
+            <label for="location">Where do you want your ambulance?</label>
+            <input type="text" id="location" name="location" placeholder="Enter location" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+
+            <p>Choose Type of Ambulance</p>
+            <label><input type="radio" name="ambulance-type" value="Normal"> Normal Ambulance</label>
+            <label><input type="radio" name="ambulance-type" value="Oxygen"> Oxygen Ambulance</label>
+            <label><input type="radio" name="ambulance-type" value="ICU"> ICU Ambulance</label>
+
+            <button type="button" class="submit-btn" onclick="submitBooking()">Book AMBULANCE</button>
+        </form>
+    </div>
+</div>
+
+<div id="confirmationPopup" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeConfirmation()">&times;</span>
+        <h2>Ambulance Successfully Booked!</h2>
+        <p>Your ambulance has been successfully booked. You will receive a confirmation message shortly.</p>
+        <button class="submit-btn" onclick="closeConfirmation()">OK</button>
+    </div>
+</div>
+
+<script src="ambscripts.js"></script>
+
+</body>
+</html>

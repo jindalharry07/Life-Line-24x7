@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Bookings</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        #login-container, #booking-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            position: relative;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            transition: all 0.3s ease-in-out;
+        }
+        #login-container {
+            max-width: 350px;
+            padding: 50px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #booking-container {
+            display: none;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #00c9ff;
+            font-weight: 600;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #fff;
+            text-align: left;
+            width: 100%;
+        }
+
+        form input {
+            width: 90%;
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s, background-color 0.3s;
+        }
+
+        form input::placeholder {
+            color: #ddd;
+        }
+
+        form input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        form button {
+            width: 90%;
+            padding: 14px;
+            background-color: #00c9ff;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 6px 15px rgba(0, 201, 255, 0.3);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        form button:hover {
+            background-color: #92fe9d;
+            box-shadow: 0 6px 20px rgba(146, 254, 157, 0.5);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 15px;
+            color: #fff;
+        }
+
+        th {
+            background-color: #00c9ff;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        td {
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px; 
+            justify-content: center;
+            align-items: center;
+        }
+
+       .action-btn {
+        padding: 8px 14px;
+        width: 80px; 
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        color: white;
+        }
+
+
+
+        td:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        td:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        button.action-btn {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .done-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .done-btn:hover {
+            background-color: #45a049;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #da190b;
+        }
+
+        .home-btn {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #00c9ff;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 6px 15px rgba(0, 201, 255, 0.3);
+        }
+
+        .home-btn:hover {
+            background-color: #92fe9d;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="login-container">
+        <h2>Login to View Bookings</h2>
+        <form id="loginForm">
+            <label for="user-id">User ID:</label>
+            <input type="text" id="user-id" name="user-id" placeholder="Enter your ID" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <br>
+            <button type="button" onclick="validateLogin()">Login</button>
+        </form>
+    </div>
+
+    <div id="booking-container">
+        <h2>Ambulance Bookings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Phone Number</th>
+                    <th>Ambulance Type</th>
+                    <th>Booking Time</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="booking-data">
+                
+            </tbody>
+        </table>
+
+        <button class="home-btn" onclick="goHome()">Back to Home</button>
+
+    </div>
+
+    <script>
+        
+        const validCredentials = {
+            userId: "admin",
+            password: "123"
+        };
+
+        
+        function validateLogin() {
+            const userId = document.getElementById('user-id').value;
+            const password = document.getElementById('password').value;
+
+            if (userId === validCredentials.userId && password === validCredentials.password) {
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('booking-container').style.display = 'block';
+                loadBookings();  
+            } else {
+                alert("Invalid credentials, please try again.");
+            }
+        }
+
+        
+        function loadBookings() {
+    const bookings = JSON.parse(localStorage.getItem('ambulanceBookings')) || [];
+    const bookingTable = document.getElementById('booking-data');
+    bookingTable.innerHTML = '';
+
+    bookings.forEach((booking, index) => {
+        const row = document.createElement('tr');
+        row.setAttribute('data-index', index);
+
+        
+        if (booking.ambulanceType === "Emergency") {
+            row.style.backgroundColor = '#ff6961';
+        }
+
+        row.innerHTML = `
+            <td>${booking.location}</td>
+            <td>${booking.phone}</td>
+            <td>${booking.ambulanceType}</td>
+            <td>${booking.time}</td>
+            <td class="actions">
+                <button class="action-btn done-btn" onclick="markAsDone(this)">Done</button>
+                <button class="action-btn delete-btn" onclick="deleteRow(this)">Delete</button>
+            </td>
+        `;
+        bookingTable.appendChild(row);
+    });
+}
+
+
+        
+        function markAsDone(button) {
+            const row = button.parentElement.parentElement;
+            row.style.backgroundColor = '#4CAF50'; // green
+            row.style.color = '#fff';
+        }
+
+        
+        function deleteRow(button) {
+            const row = button.parentElement.parentElement;
+            const index = row.getAttribute('data-index');
+            let bookings = JSON.parse(localStorage.getItem('ambulanceBookings')) || [];
+            bookings.splice(index, 1); 
+            localStorage.setItem('ambulanceBookings', JSON.stringify(bookings));
+            loadBookings(); 
+        }
+
+        
+        function goHome() {
+            //location.reload(); 
+            window.location.href = 'page.html'
+        }
+    </script>
+</body>
+</html>

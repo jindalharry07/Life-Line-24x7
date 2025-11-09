@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+.cc{
+    visibility:hidden;
+}
+.uu{
+    visibility:hidden;
+}
+</style>
+<body>
+    <div class="cc">
+    <input type="text" class="createn">
+    <input type="text" class="creater">
+    <button class="create-btn" onclick="cret()">Create</button>
+</div>
+<div class="uu">
+    <input type="text" class="updaten">
+    <input type="text" class="updater">
+    <button class="update-btn" onclick="edit()">update</button>
+</div>
+    <button onclick="visble()">+Create</button>
+    <table class="st">
+        <tr>
+        <th>Name</th>
+        <th>Roll No.</th>
+        <th>action</th>
+    </tr>
+    </table>
+
+    <script>
+        
+
+      
+       function cret(){
+        let name=document.querySelector(".createn").value;
+        let roll=document.querySelector(".creater").value;
+        var nr=document.createElement("tr");
+        var n=document.createElement("td");
+        var r=document.createElement("td");
+        var e=document.createElement("button");
+        n.innerText=name;
+        r.innerText=roll;
+        e.innerText="Edit"
+
+        e.onclick=function vv(){
+        document.querySelector(".uu").style.visibility="visible";
+        document.querySelector(".cc").style.visibility="none";
+
+       };
+        
+        nr.appendChild(n);
+        nr.appendChild(r);
+        nr.appendChild(e);
+
+        document.querySelector(".st").appendChild(nr);
+        uv();
+       }
+       function uv(){
+        document.querySelector(".cc").style.visibility="hidden";
+       }
+       function visble(){
+        document.querySelector(".cc").style.visibility="visible";
+        document.querySelector(".uu").style.visibility="none";
+       }
+       function edit(){
+        nr=null;
+       }
+    </script>
+</body>
+</html>

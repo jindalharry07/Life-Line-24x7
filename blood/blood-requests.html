@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Requests - Blood Bank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styling */
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #c62828;
+            color: #fff;
+            margin-bottom: 20px;
+            border-radius: 0 0 10px 10px; /* Rounded corners at the bottom */
+        }
+
+        /* Table container */
+        .table-container {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            margin-bottom: 30px;
+        }
+
+        /* Table styling */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            text-align: center;
+            padding: 12px;
+            border: 1px solid #dee2e6;
+        }
+
+        .table th {
+            background-color: #ad1100;
+            color: #fff;
+        }
+
+        .table tbody tr:hover {
+            background-color: #ffe0b2;
+        }
+
+        /* Action buttons */
+        .btn {
+            margin: 0 5px;
+        }
+
+        /* No data alert */
+        .alert {
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.5rem;
+            }
+
+            .table th, .table td {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            .table-container {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header {
+                font-size: 1.3rem;
+            }
+
+            .table th, .table td {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+
+            .table-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Blood Requests and Donations</h1>
+    </div>
+
+    <div class="container table-container">
+        <h3>Active Requests and Donations</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Date</th>
+                    <th>Blood Group</th>
+                    <th>Message</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="requestTableBody">
+                <!-- Dynamic rows will be populated here -->
+            </tbody>
+        </table>
+        <div class="alert alert-warning" id="noRequestsAlert">No blood requests or donations found!</div>
+    </div>
+
+    <div class="container table-container">
+        <h3>Completed Requests and Donations</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Date</th>
+                    <th>Blood Group</th>
+                    <th>Message</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="doneTableBody">
+                <!-- Dynamic rows will be populated here -->
+            </tbody>
+        </table>
+        <div class="alert alert-warning" id="noDoneRequestsAlert">No completed requests or donations found!</div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const requestTableBody = document.getElementById('requestTableBody');
+            const doneTableBody = document.getElementById('doneTableBody');
+            const bloodRequests = JSON.parse(localStorage.getItem('bloodRequests')) || [];
+            const bloodDonations = JSON.parse(localStorage.getItem('bloodDonations')) || [];
+            const completedRequests = JSON.parse(localStorage.getItem('completedRequests')) || [];
+
+            // Display active requests and donations
+            if (bloodRequests.length === 0 && bloodDonations.length === 0) {
+                document.getElementById('noRequestsAlert').style.display = 'block';
+            } else {
+                bloodRequests.forEach((request, index) => {
+                    const row = createTableRow(request, 'Request', index, 'bloodRequests', request.done);
+                    requestTableBody.appendChild(row);
+                });
+
+                bloodDonations.forEach((donation, index) => {
+                    const row = createTableRow(donation, 'Donation', index, 'bloodDonations', donation.done);
+                    requestTableBody.appendChild(row);
+                });
+            }
+
+            // Display completed requests
+            if (completedRequests.length === 0) {
+                document.getElementById('noDoneRequestsAlert').style.display = 'block';
+            } else {
+                completedRequests.forEach(request => {
+                    const row = createDoneRow(request);
+                    doneTableBody.appendChild(row);
+                });
+            }
+        };
+
+        function createTableRow(data, type, index, storageKey, isDone) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${data.name}</td>
+                <td>${data.email}</td>
+                <td>${data.contact}</td>
+                <td>${data.date}</td>
+                <td>${data.bloodGroup}</td>
+                <td>${data.message}</td>
+                <td>${type}</td>
+                <td>
+                    <button class="btn btn-success" onclick="markDone(${index}, '${storageKey}')">Done</button>
+                    <button class="btn btn-danger" onclick="deleteEntry(${index}, '${storageKey}')">Delete</button>
+                </td>
+            `;
+            return row;
+        }
+
+        function createDoneRow(data) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${data.name}</td>
+                <td>${data.email}</td>
+                <td>${data.contact}</td>
+                <td>${data.date}</td>
+                <td>${data.bloodGroup}</td>
+                <td>${data.message}</td>
+                <td>${data.type}</td> <!-- Added type column -->
+            `;
+            return row;
+        }
+
+        function deleteEntry(index, storageKey) {
+            const data = JSON.parse(localStorage.getItem(storageKey));
+            if (data) {
+                data.splice(index, 1);
+                localStorage.setItem(storageKey, JSON.stringify(data));
+                location.reload();
+            }
+        }
+
+        function markDone(index, storageKey) {
+            const data = JSON.parse(localStorage.getItem(storageKey));
+            if (data) {
+                // Move the entry to completedRequests
+                const completedRequests = JSON.parse(localStorage.getItem('completedRequests')) || [];
+                // Append the type property when pushing to completedRequests
+                completedRequests.push({...data[index], type: storageKey === 'bloodRequests' ? 'Request' : 'Donation' });
+                localStorage.setItem('completedRequests', JSON.stringify(completedRequests));
+
+                // Remove the entry from the original array
+                data.splice(index, 1);
+                localStorage.setItem(storageKey, JSON.stringify(data));
+                location.reload();
+            }
+        }
+    </script>
+</body>
+
+</html>
+  

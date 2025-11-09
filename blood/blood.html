@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+            scroll-behavior: smooth;
+            padding-top: 90px; 
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #e63946;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .navbar {
+            /* background-color: #ffffff; */
+            border-radius: 0 0 20px 20px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1030;
+            position: fixed; 
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar .logo {
+            height: 50px;
+        }
+
+        .navbar-collapse {
+            flex-grow: 0;
+        }
+
+        .navbar-nav {
+            flex-direction: row;
+            flex-wrap: nowrap; 
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #e63946;
+        }
+
+        .navbar .btn {
+            border-radius: 20px;
+        }
+
+        .navbar .btn-outline-danger {
+            border-color: #e63946;
+            color: #e63946;
+        }
+
+        .navbar .btn-outline-danger:hover {
+            background-color: #e63946;
+            color: white;
+        }
+
+        .navbar .btn-danger {
+            background-color: #e63946;
+            border: none;
+        }
+
+        .navbar .btn-danger:hover {
+            background-color: #d62839;
+        }
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: none;
+            background-color: #e63946; 
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+        }
+
+       
+        .services-section {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+            margin: 0; 
+        }
+
+        .service-box {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-box img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .service-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-box h3 {
+            margin-top: 10px;
+            font-size: 1.75rem;
+            color: #e63946;
+        }
+
+        .donate-section {
+            background-color: #ffffff;
+            padding: 50px 0;
+        }
+
+        .donate-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .donate-section p {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .blood-need-section {
+            background-color: #ffebeb;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .blood-need-section::before {
+            /* content: ""; */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.freecreatives.com/wp-content/uploads/2015/03/Huge-Backgrounds-17.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .blood-need-section h2 {
+            font-size: 3.5rem;
+            color: #e63946;
+            margin-bottom: 20px;
+        }
+
+        .blood-need-section p {
+            font-size: 1.5rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .blood-need-section .btn {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            background-color: #e63946;
+            color: #fff;
+            border-radius: 50px;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .blood-need-section .btn:hover {
+            background-color: #d62839;
+        }
+
+        @media (max-width: 992px) {
+            .navbar-collapse {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar-nav {
+                margin-top: 10px;
+            }
+
+            .navbar-nav .nav-item {
+                margin-bottom: 10px;
+            }
+
+            .carousel-caption {
+                width: 90%;
+                left: 5%;
+                font-size: 0.9rem;
+            }
+        }
+
+.slider{
+    height: 100vh;
+    margin-top: -50px;
+    width: 99vw;
+    overflow: hidden;
+    position: relative;
+}
+.slider .list .item{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0 0 0 0;
+}
+.slider .list .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slider .list .item .content{
+    position: absolute;
+    top: 20%;
+    width: 1140px;
+    max-width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-right: 30%;
+    box-sizing: border-box;
+    color: #fff;
+    text-shadow: 0 5px 10px #0004;
+}
+
+.slider .list .item .content .title,
+.slider .list .item .content .type{
+    font-size: 5em;
+    font-weight: bold;
+    line-height: 1.3em;
+}
+.slider .list .item .type{
+    color: #dd4552;
+}
+.slider .list .item .button{
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 40px;
+    gap: 5px;
+    margin-top: 20px;
+}
+.slider .list .item .button button{
+    border: none;
+    background-color: #eee;
+    font-family: Poppins;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.4s;
+    letter-spacing: 2px;
+}
+
+
+.slider .list .item .button button:hover{
+    letter-spacing: 3px;
+}
+.slider .list .item .button button:nth-child(2){
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #eee;
+}
+
+.thumbnail{
+    position: absolute;
+    
+    bottom: 50px;
+    left: 50%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+    visibility: hidden;
+}
+
+.thumbnail .item{
+    width: 150px;
+    height: 220px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.thumbnail .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.nextPrevArrows{
+    position: absolute;
+    top: 80%;
+    right: 52%;
+    z-index: 100;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.nextPrevArrows button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e63946;
+    border: none;
+    color: #fff;
+    font-family: monospace;
+    font-weight: bold;
+    transition: .5s;
+    cursor: pointer;
+}
+.nextPrevArrows button:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+.slider .list .item:nth-child(1){
+    z-index: 1;
+}
+
+.slider .list .item:nth-child(1) .content .title,
+.slider .list .item:nth-child(1) .content .type,
+.slider .list .item:nth-child(1) .content .description,
+.slider .list .item:nth-child(1) .content .buttons
+{
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .5s 1s linear 1 forwards;
+}
+@keyframes showContent{
+    to{
+        transform: translateY(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+.slider .list .item:nth-child(1) .content .title{
+    animation-delay: 0.4s !important;
+}
+.slider .list .item:nth-child(1) .content .type{
+    animation-delay: 0.6s !important;
+}
+.slider .list .item:nth-child(1) .content .description{
+    animation-delay: 0.8s !important;
+}
+.slider .list .item:nth-child(1) .content .buttons{
+    animation-delay: 1s !important;
+}
+
+.slider.next .list .item:nth-child(1) img{
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation: showImage .5s linear 1 forwards;
+}
+
+@keyframes showImage{
+    to{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+.slider.next .thumbnail .item:nth-last-child(1){
+    overflow: hidden;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.slider.prev .list .item img{
+    z-index: 100;
+}
+
+
+@keyframes showThumbnail{
+    from{
+        width: 0;
+        opacity: 0;
+    }
+}
+
+
+.slider.next .thumbnail{
+    animation: effectNext .5s linear 1 forwards;
+}
+
+@keyframes effectNext{
+    from{
+        transform: translateX(150px);
+    }
+}
+
+.slider.prev .list .item:nth-child(2){
+    z-index: 2;
+}
+
+.slider.prev .list .item:nth-child(2) img{
+    animation: outFrame 0.5s linear 1 forwards;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+@keyframes outFrame{
+    to{
+        width: 150px;
+        height: 220px;
+        bottom: 50px;
+        left: 50%;
+        border-radius: 20px;
+    }
+}
+.description{
+    font-size:20px;
+    color:#e77681;
+}
+.slider.prev .thumbnail .item:nth-child(1){
+    overflow: hidden;
+    opacity: 0;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.slider.next .nextPrevArrows button,
+.slider.prev .nextPrevArrows button{
+    pointer-events: none;
+}
+
+
+.slider.prev .list .item:nth-child(2) .content .title,
+.slider.prev .list .item:nth-child(2) .content .type,
+.slider.prev .list .item:nth-child(2) .content .description,
+.slider.prev .list .item:nth-child(2) .content .buttons
+{
+    animation: contentOut 1.5s linear 1 forwards!important;
+}
+
+@keyframes contentOut{
+    to{
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+@media screen and (max-width: 678px) {
+    .slider .list .item .content{
+        padding-right: 0;
+    }
+    .slider .list .item .content .title{
+        font-size: 50px;
+    }
+}
+a{
+    text-decoration: none;
+}
+
+
+.iframe-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+           
+        }
+        iframe {
+            width: 100%;
+            height: 400px; 
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/mainpage/index.html"><img src="logo-color.png" alt="Blood Bank Logo" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i> 
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/lifeline/mainpage/index.html"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services"><i class="fas fa-cogs"></i> Our Services</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="btn btn-outline-danger" href="#blood-need"><i class="fas fa-tint"></i> Blood Need</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-danger ms-2" href="#donate"><i class="fas fa-hand-holding-heart"></i> Donate Blood</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="slider">
+
+
+        <div class="list">
+
+            <div class="item">
+                <img src="pexels-puwadon-sang-ngern-2168173-5340267.jpg" alt="">
+
+                <div class="content">
+                    <div class="title">Donate Blood, Save Lives</div>
+        <div class="type">Urgent Appeal</div>
+        <div class="description">
+            "Every drop counts. Be a hero and give the gift of life by donating blood today."
+        </div>
+                    
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="pexels-shvetsa-4167539.jpg" alt="">
+
+                <div class="content">
+                    <div class="title">Be the Reason for Someone’s Pulse</div>
+        <div class="type">Life-Saving Act</div>
+        <div class="description">
+            "A single donation can help multiple lives. Be the reason someone sees tomorrow."
+        </div>
+                   
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="shutterstock_1586903512-1.jpg" alt="">
+
+                <div class="content">
+                    <div class="title">A Simple Act of Kindness</div>
+                    <div class="type">Community Support</div>
+                    <div class="description">
+                        "It takes just a moment to donate, but the impact can last a lifetime."
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="ppd.jpg" alt="">
+
+                <div class="content">
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="thumbnail">
+
+            <div class="item">
+                <img src="pexels-puwadon-sang-ngern-2168173-5340267.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="pexels-shvetsa-4167539.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="shutterstock_1586903512-1.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="ppd.jpg" alt="">
+            </div>
+
+        </div>
+
+
+        <div class="nextPrevArrows">
+            <button class="prev"> < </button>
+            <button class="next"> > </button>
+        </div>
+
+
+    </div>
+
+   
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="text-center">Our Services</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="donate_blood.html">
+                    <div class="service-box">
+                        <img src="https://th.bing.com/th/id/R.145cf0d5a9ad208db8c62a4da0595069?rik=6JlC8CP1PWatZA&riu=http%3a%2f%2fcdn2.hubspot.net%2fhubfs%2f419889%2fdonate_blood.jpg&ehk=1VlAhXnjsp%2bYgg7RXzye5sr61OKB0JNTJ%2fWQNbileM4%3d&risl=&pid=ImgRaw&r=0" alt="Blood Donation">
+                        <h3><i class="fas fa-tint"></i> Blood Donation</h3>
+                        <p>Contribute to saving lives by donating blood at our blood banks.</p>
+                    </div>
+                </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="request_blood.html">
+                    <div class="service-box">
+                        <img src="https://kubrick.htvapps.com/htv-prod-media.s3.amazonaws.com/images/red-cross-1617285908.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*" alt="Blood Need">
+                        <h3><i class="fas fa-heartbeat"></i> Blood Need</h3>
+                        <p>Urgent need of blood? We connect donors with those in need efficiently.</p>
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="iframe-container">
+        <iframe src="try.html"></iframe>
+    </div>
+    <section id="blood-need" class="blood-need-section text-center">
+        <div class="container">
+            <h2><i class="fas fa-exclamation-circle"></i> Urgent Blood Need</h2>
+            <p>Are you or someone you know in urgent need of blood? Reach out to us, and we will connect you with the right donors.</p>
+            <a href="request_blood.html" class="btn"><i class="fas fa-hands-helping"></i> Request Blood</a>
+        </div>
+    </section>
+
+    <section id="donate" class="donate-section text-center">
+        <div class="container">
+            <h2><i class="fas fa-hand-holding-heart"></i> Donate Blood, Save Lives</h2>
+            <p>Your donation is the most precious gift someone can receive.</p>
+            <a href="donate_blood.html" class="btn btn-danger"><i class="fas fa-heart"></i> Donate Now</a>
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+
+let nextBtn = document.querySelector('.next')
+let prevBtn = document.querySelector('.prev')
+
+let slider = document.querySelector('.slider')
+let sliderList = slider.querySelector('.slider .list')
+let thumbnail = document.querySelector('.slider .thumbnail')
+let thumbnailItems = thumbnail.querySelectorAll('.item')
+
+thumbnail.appendChild(thumbnailItems[0])
+
+
+nextBtn.onclick = function() {
+    moveSlider('next')
+}
+prevBtn.onclick = function() {
+    moveSlider('prev')
+}
+
+
+function moveSlider(direction) {
+    let sliderItems = sliderList.querySelectorAll('.item')
+    let thumbnailItems = document.querySelectorAll('.thumbnail .item')
+    
+    if(direction === 'next'){
+        sliderList.appendChild(sliderItems[0])
+        thumbnail.appendChild(thumbnailItems[0])
+        slider.classList.add('next')
+    } else {
+        sliderList.prepend(sliderItems[sliderItems.length - 1])
+        thumbnail.prepend(thumbnailItems[thumbnailItems.length - 1])
+        slider.classList.add('prev')
+    }
+
+
+    slider.addEventListener('animationend', function() {
+        if(direction === 'next'){
+            slider.classList.remove('next')
+        } else {
+            slider.classList.remove('prev')
+        }
+    }, {once: true})
+}
+
+
+
+    </script>
+</body>
+
+</html>
